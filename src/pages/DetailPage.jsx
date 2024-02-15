@@ -65,6 +65,8 @@ const DetailPage = () => {
           <p className="bg-pinkRed w-full max-w-[200px] h-[40px]  text-darkBlue font-semibold text-center p-1 rounded-md mt-10">
               { listing.regularPrice}0,000,000 $
           </p>
+          <div className="my-10 max-w-2xl">
+            <span className="font-bold">Description - </span>{listing.description}</div>
           <div className="">
           <h2 className="font-semibold text-xl mt-8">Property details</h2>
           <span className="mt-2 max-w-[160px] border border-slate-500 flex"></span>
@@ -112,7 +114,7 @@ const DetailPage = () => {
             </div>
           </div>
           <Link to={`/purchase/${listing._id}`}>
-          <button className="bg-slateWhite mt-20 w-full max-w-[200px] h-[40px] font-semibold text-center p-1 rounded-md">Buy now</button>
+          <button className="bg-thirdGreen mt-20 w-full max-w-[200px] h-[40px] font-semibold text-center p-1 rounded-md">Buy now</button>
           </Link>
             
         </div>

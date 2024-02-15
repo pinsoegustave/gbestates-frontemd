@@ -53,6 +53,7 @@ const Home = () => {
           <h2 className="text-3xl font-semibold m-10 text-center">
             Better home, more pride
           </h2>
+      <p className="text-red-300">{showListingError}</p>
       <div className="p-4 mx-auto grid grid-cols-3 gap-16 w-[80%] gap-y-10 mb-4" >
       {/* House Card */}
       {

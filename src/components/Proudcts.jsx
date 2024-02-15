@@ -70,7 +70,7 @@ export default function Proudcts() {
               <tr key={index}>
                 <td>{result._id.slice(0,5) + ".."}</td>
                 <td>{result.name}</td>
-                <td>{result.description.slice(0,5) + ".."}</td>
+                <td>{result.description.slice(0,10) + ".."}</td>
                 <td>{result.address}</td>
                 <td>{result.furnished === 'true' ? 'Furnished' : 'No'}</td>
                 <td>{result.parking === 'true' ? 'True' : 'None'}</td>
@@ -78,13 +78,11 @@ export default function Proudcts() {
                 {/* <td>{result.offer}</td> */}
                 <td><img src={result.imageUrls[0]} alt="" width={50} height={50} /></td>
                 <td className='flex gap-2 mb-1'>
-                {/* <Link className='text-decoration-none btn btn-sm btn-success'  */}
-                    {/* to={`/update/${info._id}`}> */}
-                    {/* Update */}
-                  {/* </Link> */}
+                  <Link to={`/layout/update-listing/${result._id}`}>
                     <button className='p-2 text-decoration-none bg-green-800 text-redBeige rounded-sm'>
                       Update
                     </button>
+                  </Link>
                   <button className='p-2 text-decoration-none bg-red-800 text-redBeige rounded-sm' onClick={e => handleListingDelete(result._id)}>
                       Delete
                     </button>

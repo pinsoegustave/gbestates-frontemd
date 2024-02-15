@@ -19,6 +19,7 @@ import Orders from './pages/Orders'
 import Customers from './pages/Customers'
 import Topbar from './components/shared/Topbar'
 import ShowHeader from './components/ShowHeader'
+import UpdateListing  from './pages/UpdateListing'
 
 function App() {
   return (
@@ -40,14 +41,15 @@ function App() {
         <Route path='/layout' element={<Layout />}>
           <Route index element={<Dashboard />} />
           <Route path='/layout/products' element={<Proudcts />} />
-        <Route path='/layout/create-listing' element={<CreateListing/>} />
+          <Route path='/layout/create-listing' element={<CreateListing/>} />
+          <Route path='/layout/update-listing/:id' element={<UpdateListing />} />
           <Route path='/layout/orders' element={<Orders />} />
           <Route path='/layout/customers' element={<Customers />} />
         </Route>
       </Route>
     </Routes>
     <ShowHeader>
-      <Footer />
+      {/* <Footer /> */}
     </ShowHeader>
 
   </BrowserRouter>

@@ -33,12 +33,12 @@ const Orders = () => {
                 <th>ID</th>
                 <th>Customers name</th>
                 <th>Customer Email</th>
-                <th>Customer Phone number</th>
+                <th>Phone number</th>
                 <th>House Needed</th>
                 <th>Actions</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody className='items-center'>
               { orders && orders.map((cust, index) => (
                 <tr key={index}>
                   <td>{cust._id.slice(0, 10) + "..."}</td>
@@ -46,9 +46,9 @@ const Orders = () => {
                   <td>{cust.email}</td>
                   <td>{cust.phone}</td>
                   <td>{cust.house}</td>
-                  <td>
-                    <button>Update</button>
-                    <button>Delete</button>
+                  <td className='flex gap-2 justify-center mb-2'>
+                    <button className='p-2 text-decoration-none bg-green-800 text-redBeige rounded-sm'>Approve</button>
+                    <button className='p-2 text-decoration-none bg-yellow-400 text-redBeige rounded-sm'>Decline</button>
                   </td>
                 </tr>
               ))}

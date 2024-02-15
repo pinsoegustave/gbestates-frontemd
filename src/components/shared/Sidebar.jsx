@@ -13,7 +13,7 @@ export default function Sidebar() {
     <div className="bg-slate-900 w-60 p-3 flex flex-col text-white">
         <div className="flex items-center gap-2 px-1 py-3">
         <FcHome fontSize={24}/>
-        <Link to="/about">
+        <Link to="/">
         <span className="text-neutral-100 text-lg">GBE</span> </Link>
         </div>
     <div className="flex-1 py-8 flex flex-col gap-0.5">
