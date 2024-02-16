@@ -20,21 +20,22 @@ import Customers from './pages/Customers'
 import Topbar from './components/shared/Topbar'
 import ShowHeader from './components/ShowHeader'
 import UpdateListing  from './pages/UpdateListing'
+import Headerfile from './pages/Headerfile'
 
 function App() {
   return (
   <BrowserRouter>
-  <ShowHeader>
-    <Topbar/>
-  </ShowHeader>
-
+  
     <Routes>
-      <Route path="/" element={<Home/>}></Route>
+
+      <Route path="/" element={<Headerfile />}>
+        <Route index element={<Home />}/>
+        <Route path='detail/:listingId' element={<DetailPage />} />
+        <Route path="about" element={<About/>}></Route>
+      </Route>
       <Route path='/navbar' element={<Navbar />} />
-      <Route path='/detail/:listingId' element={<DetailPage />} />
       <Route path="/sign-in" element={<SignIn/>}></Route>
       <Route path="/sign-up" element={<SignUp/>}></Route>
-      <Route path="/about" element={<About/>}></Route>
       <Route element={<PrivateRoute/>} >
         <Route path='/profile' element={<Profile/>} />
         <Route path='/purchase/:id' element={<BuyHouse/>} />
@@ -47,10 +48,8 @@ function App() {
           <Route path='/layout/customers' element={<Customers />} />
         </Route>
       </Route>
+
     </Routes>
-    <ShowHeader>
-      {/* <Footer /> */}
-    </ShowHeader>
 
   </BrowserRouter>
   )

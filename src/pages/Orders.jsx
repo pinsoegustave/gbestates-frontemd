@@ -1,32 +1,82 @@
 import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
 
 const Orders = () => {
   const [ orders, setOrders ] = useState(false);
   const [ loading, setLoading ] = useState(true);
+  // const [ status, setStatus ] = useState('');
+  const [ isApproved, setIsApproved ] =useState(true);
 
-  useEffect(() => {
-    const getOrders =async () => {
+
+  const handleApprove = async (id) => {
+      const status = 'Approved';
       try {
-        setLoading(true);
+        const res = await fetch(`/api/listing/updateOrder/${id}`, {
+          method : 'POST',
+          headers : {
+            'Content-Type' : 'application/json',
+          },
+          body: JSON.stringify({ status })
+        });
+        setIsApproved('Your order is approved');
         const result = await fetch('/api/listing/getAllOrders');
-        const data = await result.json();
-        if (data === false) {
-          setLoading(false);
-          return;
-        }
-        setOrders(data);
-      } catch (error) {
-        setLoading(true)
+      const data = await result.json();
+      if (data === false) {
+        setLoading(false);
+        return;
       }
-    };
-    getOrders();
-  }, [])
+      setOrders(data);
+      } catch (error) {
+        console.log(error.message)
+        setIsApproved('Your order has been declined');
+      }  
+  }
+  const handleReject = async (id) => {
+    const status = 'Declined';
+    try {
+      const res = await fetch(`/api/listing/updateOrder/${id}`, {
+        method : 'POST',
+        headers : {
+          'Content-Type' : 'application/json',
+        },
+        body: JSON.stringify({ status })
+      });
+      setIsApproved('Your order is declined');
+      const result = await fetch('/api/listing/getAllOrders');
+      const data = await result.json();
+      if (data === false) {
+        setLoading(false);
+        return;
+      }
+      setOrders(data);
+    } catch (error) {
+      // next(error);
+      setIsApproved('Your order has been declined');
+    }  
+}
+
+useEffect(() => {
+  const getOrders = async () => {
+    try {
+      setLoading(true);
+      const result = await fetch('/api/listing/getAllOrders');
+      const data = await result.json();
+      if (data === false) {
+        setLoading(false);
+        return;
+      }
+      setOrders(data);
+    } catch (error) {
+      setLoading(true)
+    }
+  };
+  getOrders();
+}, []);
 
   return (
     <div>
        <div className='container mt-1'>
         <h2 className='font-semibold'>Orders from the customer</h2>
+        { loading }
           <table className='table'>
             <thead>
               <tr>
@@ -47,8 +97,10 @@ const Orders = () => {
                   <td>{cust.phone}</td>
                   <td>{cust.house}</td>
                   <td className='flex gap-2 justify-center mb-2'>
-                    <button className='p-2 text-decoration-none bg-green-800 text-redBeige rounded-sm'>Approve</button>
-                    <button className='p-2 text-decoration-none bg-yellow-400 text-redBeige rounded-sm'>Decline</button>
+                    { cust.status === 'Pending' && (<> <button className='p-2 text-decoration-none bg-green-800 text-redBeige rounded-sm'  onClick={() => handleApprove(`${cust._id}`)}>Approve</button><button className='p-2 text-decoration-none bg-yellow-400 text-redBeige rounded-sm' onClick={() => handleReject(`${cust._id}`)}>Decline</button></>) }                    
+                   { cust.status === 'Approved' && (<p className="p-2 text-decoration-none bg-green-800 text-redBeige rounded-sm">Order approved</p>) }
+                   { cust.status === 'Declined' && (<p className='p-2 text-decoration-none bg-yellow-400 text-redBeige rounded-sm'> Order declined</p>) }
+                    
                   </td>
                 </tr>
               ))}
