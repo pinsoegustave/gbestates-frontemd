@@ -75,7 +75,7 @@ const Profile = () => {
     e.preventDefault();
     try {
       dispatch(updateUserStart());
-      const res = await fetch(`/api/user/update/${currentUser._id}`, {
+      const res = await fetch(`https://gbestates.onrender.com/api/user/update/${currentUser._id}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -96,7 +96,7 @@ const Profile = () => {
   const handleDeleteUser = async () => {
     try {
       dispatch(deleteUserStart());
-      const res = await fetch(`/api/user/delete/${currentUser._id}`, {
+      const res = await fetch(`https://gbestates.onrender.com/api/user/delete/${currentUser._id}`, {
         method: "DELETE",
       });
       const data = await res.json();
@@ -113,7 +113,7 @@ const Profile = () => {
   const handleSignOut = async () => {
     try {
       dispatch(signOutUserStart());
-      const res = await fetch("/api/auth/signout");
+      const res = await fetch("https://gbestates.onrender.com/api/auth/signout");
       const data = await res.json();
       if (data.success === false) {
         dispatch(deleteUserFailure(data.message));
@@ -128,7 +128,7 @@ const Profile = () => {
   const handleShowListing = async () => {
     try {
       setShowListingError(false);
-      const res = await fetch("/api/listing/getAllHouses");
+      const res = await fetch("https://gbestates.onrender.com/api/listing/getAllHouses");
       const data = await res.json();
       if (data.success === false) {
         setShowListingError(true);
@@ -140,6 +140,7 @@ const Profile = () => {
       setShowListingError(true);
     }
   };
+  
   return (
     <div className="p-3 max-w-lg mx-auto bg-red-100">
       <h1 className="text-3xl font-semibold text-center my-7">Profile</h1>
@@ -204,7 +205,7 @@ const Profile = () => {
         </button>
         <Link
           className="bg-green-700 text-white p-3 rounded-lg uppercase text-center hover:opacity-95"
-          to={"/create-listing"}
+          to={"/layout/create-listing"}
         >
           Create a new house
         </Link>

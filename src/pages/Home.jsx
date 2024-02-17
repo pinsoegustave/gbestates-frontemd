@@ -11,7 +11,7 @@ const Home = () => {
     const fetchListing = async () => {
       try {
         setLoading(true);
-        const res = await fetch('/api/listing/getAllHouses');
+        const res = await fetch('https://gbestates.onrender.com/api/listing/getAllHouses');
         const data = await res.json();
         if (data === false) {
           setShowListingError(true)
