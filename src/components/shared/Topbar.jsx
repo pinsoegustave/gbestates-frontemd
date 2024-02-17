@@ -1,16 +1,22 @@
 import React from 'react'
 import { HiOutlineSearch } from 'react-icons/hi'
 import { Link } from 'react-router-dom'
-import {FaUserCircle} from 'react-icons/fa'
+import {FaFacebook, FaInstagramSquare, FaLinkedin, FaUserCircle} from 'react-icons/fa'
 import { useSelector } from 'react-redux'
+import { FaSquareXTwitter } from 'react-icons/fa6'
 
 export default function Topbar() {
   const { currentUser } = useSelector(state => state.user)
   return (
     <div className=''>
       <div className='bg-white h-16 px-4 flex justify-between items-center'>
-        <div className='px-10 text-sm underline'>
-          Learn more about Guest satisfactions, the most loved homes on GBE.</div>
+      <div className="ml-7 flex items-center display-flex justify-center p-3 cursor-pointer">
+            <p className=''>Follow us on | </p>
+            <FaFacebook className="mx-2 text-xl" />
+            <FaInstagramSquare className="mx-2 text-xl" />
+            <FaSquareXTwitter className="mx-2 text-xl" />
+            <FaLinkedin className="mx-2 text-xl" /> 
+          </div>
         <div className="relative">
           <HiOutlineSearch fontSize={20} className="text-gray-400 absolute top-1/2 -translate-y-1/2 left-3" />
           <input type="text" placeholder='Search...' className="text-sm focus:outline-none active:outline-none h-10 w-[15rem] border border-gray-300 rounded-sm pl-11 pr-4 bg-amber-50" />
@@ -32,7 +38,7 @@ export default function Topbar() {
             </Link>
           </li>
           <li className="flex items-center text-black px-3">
-            <Link className="link text-black no-underline" to="/forsale">
+            <Link className="link text-black no-underline">
               For Sale
             </Link>
           </li>

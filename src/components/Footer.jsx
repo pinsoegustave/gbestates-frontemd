@@ -65,7 +65,7 @@ export default function Footer() {
               <h2 className="text-lg font-semibold mb-4">Contact Us</h2>
               <div className="text-black">
                 <p className="mb-3">
-                  <strong>Phone:</strong> +1 234 567 890
+                  <strong>Phone:</strong> +250789868814
                 </p>
                 <p className="mb-3">
                   <strong>Email:</strong> gbestates@gmail.com
