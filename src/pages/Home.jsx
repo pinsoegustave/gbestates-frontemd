@@ -31,7 +31,7 @@ const Home = () => {
   return (
     <div className="relative">
       
-      <img src="../public/assets/Home.png" alt="" className="w-full h-screen" />
+      <img src="../assets/Home.png" alt="" className="w-full h-screen" />
       <div className="absolute p-2 top-0 mt-40 sm:mt-20 w-80 bg-thirdGreen rounded-lg shadow-md right-0 mr-32">
         <h2 className="text-2xl font-extralight text-center">
           Welcome to GBE,
