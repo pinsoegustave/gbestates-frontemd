@@ -22,12 +22,12 @@ const Navbar = () => {
         {
             key : "sale",
             label : "For Sale",
-            path: "/sale",
+            // path: "/sale",
         },
         {
             key : "rent",
             label : "For rent",
-            path: "/",
+            // path: "/",
         },
 
     ]

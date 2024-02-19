@@ -43,17 +43,17 @@ export default function Topbar() {
             </Link>
           </li>
           <li className="flex items-center text-black px-3">
-            <Link className="link text-black no-underline" to="/forrent">
+            <Link className="link text-black no-underline" >
               For Rent
             </Link>
           </li>
           <p className="flex items-center px-3">
-            <Link className="bg-gray-700 text-white px-2 py-2 rounded-full flex items-center" to="/profile">
+            <Link className=" text-white px-2 py-2 rounded-full flex items-center" to="/profile">
                 { currentUser ? (
                   <img className='rounded-full h-7 w-7 object-cover' src={currentUser.avatar} alt="profile" />
                   ) : ( 
                   // <FaUserCircle className="rounded-full flex items-center" />
-                    <li className='sm:inline text-slate-700 hover:underline'>
+                    <li className='sm:inline hover:underline'>
                 Sign in</li>
                 )}
             </Link>

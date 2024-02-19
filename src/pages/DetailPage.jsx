@@ -17,7 +17,7 @@ const DetailPage = () => {
     const fetchListing = async () => {
       try {
         setLoading(true);
-        const res = await fetch(`/api/listing/getListing/${listingId}`);
+        const res = await fetch(`https://gbestates.onrender.com/api/listing/getListing/${listingId}`);
         const data = await res.json();
         if (data.success === false) {
           setError(true);
@@ -63,7 +63,7 @@ const DetailPage = () => {
           </div>
           <h1 className="text-3xl font-semibold mt-10">{listing.name}</h1>
           <p className="bg-pinkRed w-full max-w-[200px] h-[40px]  text-darkBlue font-semibold text-center p-1 rounded-md mt-10">
-              { listing.regularPrice}0,000,000 $
+              { listing.regularPrice},000Frws
           </p>
           <div className="my-10 max-w-2xl">
             <span className="font-bold">Description - </span>{listing.description}</div>
@@ -114,7 +114,7 @@ const DetailPage = () => {
             </div>
           </div>
           <Link to={`/purchase/${listing._id}`}>
-          <button className="bg-thirdGreen mt-20 w-full max-w-[200px] h-[40px] font-semibold text-center p-1 rounded-md">Buy now</button>
+          <button className="bg-thirdGreen mt-20 w-full max-w-[200px] h-[40px] font-semibold text-center p-1 rounded-md">Make an order</button>
           </Link>
             
         </div>

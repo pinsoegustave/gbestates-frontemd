@@ -17,7 +17,7 @@ function BuyHouse() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-          const res = await fetch(`/api/listing/getHouse/${id}`, {
+          const res = await fetch(`https://gbestates.onrender.com/api/listing/getHouse/${id}`, {
               method: 'POST',
               headers: {
                   'Content-Type' : 'application/json', 

@@ -37,7 +37,7 @@ const UpdateListing = () => {
   useEffect(() => {
     const fetchListing = async () => {
       const listingId = params.id;
-      const res = await fetch(`/api/listing/getListing/${listingId}`);
+      const res = await fetch(`https://gbestates.onrender.com/api/listing/getListing/${listingId}`);
       const data = await res.json();
       if (data.success === false) {
         console.log(data.message);
@@ -136,7 +136,7 @@ const UpdateListing = () => {
         setLoading(true);
         setError(false);
 
-        const res = await fetch(`/api/listing/update/${params.id}`, {
+        const res = await fetch(`https://gbestates.onrender.com/api/listing/update/${params.id}`, {
             method: 'POST',
             headers : {
                 'Content-Type': 'application/json',

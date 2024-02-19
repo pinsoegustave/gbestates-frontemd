@@ -10,7 +10,7 @@ const Orders = () => {
   const handleApprove = async (id) => {
       const status = 'Approved';
       try {
-        const res = await fetch(`/api/listing/updateOrder/${id}`, {
+        const res = await fetch(`https://gbestates.onrender.com/api/listing/updateOrder/${id}`, {
           method : 'POST',
           headers : {
             'Content-Type' : 'application/json',
@@ -18,7 +18,7 @@ const Orders = () => {
           body: JSON.stringify({ status })
         });
         setIsApproved('Your order is approved');
-        const result = await fetch('/api/listing/getAllOrders');
+        const result = await fetch('https://gbestates.onrender.com/api/listing/getAllOrders');
       const data = await result.json();
       if (data === false) {
         setLoading(false);
@@ -33,7 +33,7 @@ const Orders = () => {
   const handleReject = async (id) => {
     const status = 'Declined';
     try {
-      const res = await fetch(`/api/listing/updateOrder/${id}`, {
+      const res = await fetch(`https://gbestates.onrender.com/api/listing/updateOrder/${id}`, {
         method : 'POST',
         headers : {
           'Content-Type' : 'application/json',
@@ -41,7 +41,7 @@ const Orders = () => {
         body: JSON.stringify({ status })
       });
       setIsApproved('Your order is declined');
-      const result = await fetch('/api/listing/getAllOrders');
+      const result = await fetch('https://gbestates.onrender.com/api/listing/getAllOrders');
       const data = await result.json();
       if (data === false) {
         setLoading(false);
@@ -58,7 +58,7 @@ useEffect(() => {
   const getOrders = async () => {
     try {
       setLoading(true);
-      const result = await fetch('/api/listing/getAllOrders');
+      const result = await fetch('https://gbestates.onrender.com/api/listing/getAllOrders');
       const data = await result.json();
       if (data === false) {
         setLoading(false);
@@ -80,7 +80,6 @@ useEffect(() => {
           <table className='table'>
             <thead>
               <tr>
-                <th>ID</th>
                 <th>Customers name</th>
                 <th>Customer Email</th>
                 <th>Phone number</th>
@@ -91,7 +90,6 @@ useEffect(() => {
             <tbody className='items-center'>
               { orders && orders.map((cust, index) => (
                 <tr key={index}>
-                  <td>{cust._id.slice(0, 10) + "..."}</td>
                   <td>{cust.name}</td>
                   <td>{cust.email}</td>
                   <td>{cust.phone}</td>

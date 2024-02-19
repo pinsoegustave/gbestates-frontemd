@@ -15,7 +15,7 @@ const OAuth = () => {
 
             const result = await signInWithPopup(auth, provider)
             
-            const res = await fetch('api/auth/google', {
+            const res = await fetch('https://gbestates.onrender.com/api/auth/google', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -28,7 +28,7 @@ const OAuth = () => {
             })
             const data = await res.json();
             dispatch(signInSuccess(data));
-            navigate('/');
+            navigate('/layout');
         } catch (error) {
             console.log('Could not sign in with google', error)
         }
