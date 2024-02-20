@@ -21,6 +21,7 @@ import Topbar from './components/shared/Topbar'
 import ShowHeader from './components/ShowHeader'
 import UpdateListing  from './pages/UpdateListing'
 import Headerfile from './pages/Headerfile'
+import EmailVerify from './pages/EmailVerify'
 
 function App() {
   return (
@@ -35,6 +36,7 @@ function App() {
       </Route>
       <Route path='/navbar' element={<Navbar />} />
       <Route path="/sign-in" element={<SignIn/>}></Route>
+      <Route path='/activate-email' element={<EmailVerify />} ></Route>
       <Route path="/sign-up" element={<SignUp/>}></Route>
       <Route element={<PrivateRoute/>} >
         <Route path='/profile' element={<Profile/>} />

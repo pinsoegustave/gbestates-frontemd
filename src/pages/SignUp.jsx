@@ -6,6 +6,7 @@ const SignUp = () => {
   const [ formData ,setFormData ] = useState({});
   const [ error, setError ] = useState(null);
   const [ loading, setLoading ] = useState(false);
+  const [ message, setMessage ] = useState("");
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -24,6 +25,7 @@ const SignUp = () => {
             'Content-Type' : 'application/json',
           },
           body: JSON.stringify(formData),
+          
         });
         const data = await res.json();
         console.log(data)

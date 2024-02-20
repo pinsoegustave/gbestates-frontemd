@@ -19,6 +19,7 @@ const SignIn = () => {
   
     const handleSubmit = async (e) => {
       e.preventDefault();
+      
       try {
         dispatch(signInStart());
         const res = await fetch('https://gbestates.onrender.com/api/auth/signin', {
@@ -35,10 +36,15 @@ const SignIn = () => {
           return;
         }
         dispatch(signInSuccess(data))
-        navigate('/')
+        if (data.email === 'admin@gmail.com' && data.password == 'admin123kilop') {
+          navigate('/layout');
+        } else {
+        navigate('/') 
+      }
       } catch (error) {
         dispatch(signInFailure(error.message));
       }
+  
     };
 
   return (
