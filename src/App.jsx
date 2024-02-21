@@ -26,18 +26,16 @@ import EmailVerify from './pages/EmailVerify'
 function App() {
   return (
   <BrowserRouter>
-  
     <Routes>
-
       <Route path="/" element={<Headerfile />}>
         <Route index element={<Home />}/>
         <Route path='detail/:listingId' element={<DetailPage />} />
-        <Route path="about" element={<About/>}></Route>
+        <Route path="/about" element={<About/>}></Route>
+        <Route path="/sign-in" element={<SignIn/>}></Route>
+        <Route path="/sign-up" element={<SignUp/>}></Route>
       </Route>
       <Route path='/navbar' element={<Navbar />} />
-      <Route path="/sign-in" element={<SignIn/>}></Route>
       <Route path='/activate-email' element={<EmailVerify />} ></Route>
-      <Route path="/sign-up" element={<SignUp/>}></Route>
       <Route element={<PrivateRoute/>} >
         <Route path='/profile' element={<Profile/>} />
         <Route path='/purchase/:id' element={<BuyHouse/>} />

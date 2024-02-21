@@ -1,7 +1,18 @@
 import React from "react";
-import Footer from "../components/Footer";
+import { Swiper, SwiperSlide } from "swiper/react";
+import SwiperCore from "swiper";
+import { Navigation } from "swiper/modules";
+import "swiper/css/bundle";
+
 
 export default function About() {
+  SwiperCore.use([Navigation]);
+  const team = [
+    { names : "PINSOE Gustave", title: "CEO of GBE Estates"},
+    { names : "PINSOE Gustave", title: "CEO of GBE Estates"}
+  ];
+
+
   return (
     <div>
       <div
@@ -14,7 +25,7 @@ export default function About() {
         <h2 className="text-3xl  font-semibold">We GBE Real Estate</h2>
       </div>
       {/* About Section */}
-      <div className="p-16 bg-slate-200 rounded">
+      <div className="p-6 md:p-16 bg-slate-200 rounded">
         <h2 className="text-4xl font-bold mb-3">About Us</h2>
         <p className="mb-2 font-sans">
           Welcome to Gustave Bella Real Estate, where we believe in turning your
@@ -30,7 +41,7 @@ export default function About() {
           services, maintaining transparency, and upholding the highest ethical
           standards. Your satisfaction is our ultimate goal.
         </p>
-        <h3 className="text-2xl font-bold mb-3">Mission</h3>
+        <h3 className="text-2xl font-bold mb-3">Our Mission</h3>
         <p className="mb-2 font-sans">
           Our mission is to empower our clients to make informed decisions in
           the real estate market. We strive to provide accurate and up-to-date
@@ -69,6 +80,7 @@ export default function About() {
             </p>
           </div>
         </div>
+        
       </div>
     </div>
   );

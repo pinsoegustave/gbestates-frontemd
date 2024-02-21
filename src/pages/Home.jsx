@@ -19,6 +19,7 @@ const Home = () => {
           return;
         }
         setUserListings(data)
+        setLoading(false);
       }  
       catch (error) {
         setShowListingError(true);
@@ -29,10 +30,9 @@ const Home = () => {
   }, []);
   
   return (
-    <div className="relative">
-      
+    <div className="relative w-full">
       <img src="../assets/Home.png" alt="" className="w-full h-screen" />
-      <div className="absolute p-2 top-0 mt-40 sm:mt-20 w-80 bg-thirdGreen rounded-lg shadow-md right-0 mr-32">
+      <div className="absolute p-2 top-8 md:mt-6 mt-40 ml-6 sm:right-0 sm:mr-32 sm:mt-20 w-80 bg-thirdGreen rounded-lg shadow-md">
         <h2 className="text-2xl font-extralight text-center">
           Welcome to GBE,
         </h2>
@@ -46,15 +46,16 @@ const Home = () => {
           the cites of the word in classical literature, discovered the
           undoubtable source.
         </p>
-        <button className="m-2 sm:w-40 p-2 mt-10 ml-16 bg-redBeige">
+        <button className="m-2 sm:w-40 p-2 mt-10 ml-20 sm:ml-16 bg-redBeige">
           Explore more
         </button>
       </div>
-          <h2 className="text-3xl font-semibold m-10 text-center">
+          <h2 className="text-2xl sm:text-3xl font-semibold m-10 text-center">
             Better home, more pride
           </h2>
       <p className="text-red-300">{showListingError}</p>
-      <div className="p-4 mx-auto grid grid-cols-3 gap-16 w-[80%] gap-y-10 mb-4" >
+      {loading && <p className="">Loading....</p>}
+      <div className="p-4 mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-16 w-[80%] gap-y-10 mb-4" >
       {/* House Card */}
       {
         userListings

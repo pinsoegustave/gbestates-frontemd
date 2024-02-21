@@ -17,6 +17,7 @@ export default function Proudcts() {
           setLoading(false);
           return;
         }
+        setLoading(false);
         setListing(data);
       } catch (error) {
         setLoading(true);
@@ -50,10 +51,10 @@ export default function Proudcts() {
         <Link to='/layout/create-listing'>
           <button className='p-2 text-decoration-none bg-green-800 text-redBeige rounded-sm my-3'>Create a new house +</button>
         </Link>
-        <Table striped="columns">
+        <Table striped="columns" className='w-full border-x border-gray-400 rounded-sm'>
           <thead>
             <tr>
-              <th>ID</th>
+              {/* <th>ID</th> */}
               <th>Name</th>
               <th>Description</th>
               <th>Address</th>
@@ -64,13 +65,14 @@ export default function Proudcts() {
               <th>Actions</th>
             </tr>
           </thead>
+          { loading && <p className=''>Loading..</p>}
           <tbody>
           {
             listing && listing.map((result, index) => (
               <tr key={index}>
-                <td>{result._id.slice(0,5) + ".."}</td>
+                {/* <td>{result._id.slice(0,5) + ".."}</td> */}
                 <td>{result.name}</td>
-                <td>{result.description.slice(0,10) + ".."}</td>
+                <td>{result.description.slice(0,25) + ".."}</td>
                 <td>{result.address}</td>
                 <td>{result.furnished === 'true' ? 'Furnished' : 'No'}</td>
                 <td>{result.parking === 'true' ? 'True' : 'None'}</td>

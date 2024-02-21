@@ -3,7 +3,6 @@ import { useParams, useNavigate } from 'react-router-dom';
 
 function BuyHouse() {
     const [ formData, setFormData ] = useState({});
-    // const [ loading, setLoading ] = useState(false);
     const navigate = useNavigate();
     const { id } = useParams();
 

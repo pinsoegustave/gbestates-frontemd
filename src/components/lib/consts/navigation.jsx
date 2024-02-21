@@ -31,7 +31,7 @@ export const DASHBOARD_SIDEBAR_LINKS = [
 	{
 		key: 'customers',
 		label: 'Customers',
-		// path: '/layout/customers',
+		path: '/layout/customers',
 		icon: <HiOutlineUsers />
 	},
 	{

@@ -7,7 +7,7 @@ const Headerfile = () => {
   return (
     <div className='w-full'>
         <Topbar />
-        <Outlet />
+          <Outlet />
         <Footer />
     </div>
   )

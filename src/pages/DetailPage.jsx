@@ -4,7 +4,6 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore from "swiper";
 import { Navigation } from "swiper/modules";
 import "swiper/css/bundle";
-import { FaMapMarkedAlt } from "react-icons/fa";
 
 const DetailPage = () => {
   SwiperCore.use([Navigation]);
@@ -34,6 +33,27 @@ const DetailPage = () => {
     };
     fetchListing();
   }, []);
+
+  const handleSubmit = async (e) => {
+    try {
+      const res = await fetch(`https://gbestates.onrender.com/api/listing/getHouse/${listingId}`, {
+          method: 'POST',
+          headers: {
+              'Content-Type' : 'application/json', 
+          },
+          body: JSON.stringify(formData),
+      });
+      const data = await res.json();
+      alert("Your purchase order is sent!");
+      console.log(data);
+      navigate('/');
+
+    } catch (error) {
+      console.log(error);
+    }
+}
+
+
   return (
     <main className="relative">
       {loading && <p className="text-center my-7 text-2xl">Loading...</p>}
@@ -55,7 +75,7 @@ const DetailPage = () => {
             </SwiperSlide>
           ))}
           </Swiper>
-          <div className="mx-16 p-16 border border-red-300">
+          <div className="w-full md:max-w-4xl sm:mx-auto p-16 border border-red-300">
           <div className="flex gap-4">
             <p className="bg-pinkRed w-full max-w-[200px] h-[40px] text-darkBlue font-semibold text-center p-1 rounded-md">
               { listing.type === 'rent' ? 'For rent' : 'For sale'}
@@ -71,7 +91,7 @@ const DetailPage = () => {
           <h2 className="font-semibold text-xl mt-8">Property details</h2>
           <span className="mt-2 max-w-[160px] border border-slate-500 flex"></span>
           </div>
-          <div className="flex mt-10 gap-10 ">
+          <div className="flex flex-col md:flex-row mt-10 gap-10 ">
             <div className="w-full max-w-[400px]">
               <div className="flex justify-between">
                 <p className="font-semibold">Bedrooms: </p>
@@ -113,10 +133,7 @@ const DetailPage = () => {
                 <span className="mt-2 border border-slate-500 flex"></span>
             </div>
           </div>
-          <Link to={`/purchase/${listing._id}`}>
-          <button className="bg-thirdGreen mt-20 w-full max-w-[200px] h-[40px] font-semibold text-center p-1 rounded-md">Make an order</button>
-          </Link>
-            
+          <button onClick={handleSubmit} className="bg-thirdGreen mt-20 w-full max-w-[200px] h-[40px] font-semibold text-center p-1 rounded-md">Make an order</button>     
         </div>
         </div>
       )}
