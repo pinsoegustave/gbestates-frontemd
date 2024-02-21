@@ -34,25 +34,6 @@ const DetailPage = () => {
     fetchListing();
   }, []);
 
-  const handleSubmit = async (e) => {
-    try {
-      const res = await fetch(`https://gbestates.onrender.com/api/listing/getHouse/${listingId}`, {
-          method: 'POST',
-          headers: {
-              'Content-Type' : 'application/json', 
-          },
-          body: JSON.stringify(formData),
-      });
-      const data = await res.json();
-      alert("Your purchase order is sent!");
-      console.log(data);
-      navigate('/');
-
-    } catch (error) {
-      console.log(error);
-    }
-}
-
 
   return (
     <main className="relative">
@@ -133,7 +114,9 @@ const DetailPage = () => {
                 <span className="mt-2 border border-slate-500 flex"></span>
             </div>
           </div>
-          <button onClick={handleSubmit} className="bg-thirdGreen mt-20 w-full max-w-[200px] h-[40px] font-semibold text-center p-1 rounded-md">Make an order</button>     
+          <Link to={`/purchase/${listing._id}`}>
+            <button className="bg-thirdGreen mt-20 w-full max-w-[200px] h-[40px] font-semibold text-center p-1 rounded-md">Make an order</button>     
+          </Link>
         </div>
         </div>
       )}
