@@ -19,7 +19,8 @@ const SignUp = () => {
       e.preventDefault();
       try {
         setLoading(true);
-        const res = await fetch('https://gbestates.onrender.com/api/auth/signup', {
+        // const res = await fetch('https://gbestates.onrender.com/api/auth/signup', {
+        const res = await fetch('http://localhost:8000/api/auth/signup', {
           method: 'POST',
           headers: {
             'Content-Type' : 'application/json',

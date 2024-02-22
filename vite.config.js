@@ -12,7 +12,7 @@
 //       },
 //     },
 //   },
-//   plugins: [react()],
+//   plugins: [react()],klmk;l
 // })
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react-swc'
