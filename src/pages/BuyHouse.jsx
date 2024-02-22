@@ -36,6 +36,7 @@ function BuyHouse() {
 
   return (
     <div className='p-3 max-w-lg mx-auto'>
+      <p>Thank you choosing us</p>
         <h1 className="text-3xl font-semibold text-center my-7">Buy new house</h1>
         <form onSubmit={handleSubmit} className="flex flex-col gap-4">
         <input
